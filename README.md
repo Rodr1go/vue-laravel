@@ -1,2 +1,2 @@
 # vue-laravel
-Aplicação com VueJS e Laravel 
+Projeto utilizando Laravel com VueJS 
