@@ -28,4 +28,6 @@
 22- Criação do API/UserController: php artisan make:controller API/UserController --api      
 23- Ajustar a data: npm i moment --save
 24- Vue Progress Bar: npm i vue-progressbar --save
-25- Sweetalert2: npm i sweetalert2 --save 
+25- Sweetalert2: npm i sweetalert2 --save
+26- instalando passport: https://laravel.com/docs/5.8/passport
+ 
