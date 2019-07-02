@@ -53,6 +53,65 @@ class UserController extends Controller
         ]);
     }
 
+    public function updateProfile(Request $request)
+    {
+        $user = auth('api')->user();
+
+        
+        $this->validate($request, [
+            'name' => 'required|string|max:191',
+            'email' => 'required|string|email|max:191|unique:users,email,'.$user->id,
+            'password' => 'sometimes|required|min:6'
+        ]);
+
+        /* if ($request->photo && $request->photo !== $user->photo) {
+            $imageName = preg_match_all('/data\:image\/([a-zA-Z]+)\;base64/',$request->photo,$matched);
+            $ext = isset($matched[1][0]) ? $matched[1][0] : false;
+            $imageName = sha1(time()) . '.' .$ext;
+            
+            // create photo
+            $directory = storage_path('app/public/profiles/');
+            Storage::makeDirectory('public/profiles');
+            Image::make($request->photo)->save($directory.$imageName);
+            
+            // delete old photo
+            Storage::delete('public/profiles/'.$user->photo);
+            
+            // save DB
+            $user->photo = $imageName;
+        } */
+        
+        $currentPhoto = $user->photo;
+        
+        if($request->photo != $currentPhoto) {    
+            $imageName = preg_match_all('/data\:image\/([a-zA-Z]+)\;base64/',$request->photo,$matched);
+            $ext = isset($matched[1][0]) ? $matched[1][0] : false;
+            $imageName = sha1(time()) . '.' .$ext;
+
+            \Image::make($request->photo)->save(public_path('img/profile/').$imageName);
+            $request->merge(['photo' => $imageName]);
+
+            $userPhoto = public_path('img/profile/').$currentPhoto;
+            
+            // remove a foto atual
+            if(file_exists($userPhoto)) {
+                @unlink($userPhoto);
+            } 
+        } 
+        
+        if(!empty($request->password)) {
+            $request->merge(['password' => Hash::make($request['password'])]);
+        } 
+
+        $user->update($request->all());
+        return ["message" => "Success"];
+    }
+
+    public function profile()
+    {
+        return auth('api')->user();
+    }
+
     /**
      * Display the specified resource.
      *

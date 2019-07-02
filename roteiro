@@ -30,4 +30,8 @@
 24- Vue Progress Bar: npm i vue-progressbar --save
 25- Sweetalert2: npm i sweetalert2 --save
 26- instalando passport: https://laravel.com/docs/5.8/passport
+27- instalação intervention image: 
+    - composer require intervention/image
+    - http://image.intervention.io/getting_started/installation#laravel
+
  
