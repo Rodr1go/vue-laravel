@@ -26,7 +26,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::latest()->paginate(10);
+       // $this->authorize('isAdmin');
+       if(\Gate::allows('isAdmin') || \Gate::allows('isAuthor')) {
+           return User::latest()->paginate(10);
+       }
     }
 
     /**
@@ -152,9 +155,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('isAdmin');
         $user = User::findOrFail($id);
 
-        //deleta o usuário
         $user->delete();
         
         return ['message' => 'Usuário deletado'];

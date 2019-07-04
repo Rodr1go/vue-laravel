@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row mt-5">
+        <div class="row mt-5" v-if="$gate.isAdminOrAuthor()">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
@@ -47,6 +47,12 @@
             <!-- /.card -->
           </div>
         </div>
+        
+        <!-- Exibe página 404 caso o usuário tente acessar 
+        a url sem possuir privilégio de acesso -->
+        <div v-if="!$gate.isAdminOrAuthor()">
+            <not-found></not-found>
+        </div> 
 
         <!-- Modal -->
         <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
@@ -90,7 +96,7 @@
                           'is-invalid': form.errors.has('type') }">
                           <option value="" disabled selected>-- Selecione o tipo de permissão --</option>
                           <option value="admin">Admin</option>
-                          <option value="user">Padrão</option>
+                          <option value="user">Usuário comum</option>
                           <option value="autor">Autor</option>
                         </select>
                         <has-error :form="form" field="type"></has-error>
@@ -188,14 +194,16 @@ export default {
             )
             Fire.$emit('AfterCreate');
           }).catch(() => {
-            Swal('Falhou!', 'Algo deu errado!',
+            Swal.fire('Falhou!', 'Algo deu errado!',
             'warning');
           });
         }
       });
     },
     loadUsers() {
-      axios.get('api/user').then(({ data }) => (this.users = data.data));
+      if(this.$gate.isAdminOrAuthor()) {
+        axios.get('api/user').then(({ data }) => (this.users = data.data));
+      }
     },
     createUser() {
       this.$Progress.start();

@@ -33,5 +33,8 @@
 27- instalação intervention image: 
     - composer require intervention/image
     - http://image.intervention.io/getting_started/installation#laravel
+28- Aplicando ACL para lista de usuários: https://laravel.com/docs/5.8/authorization#introduction
+29- Página não encontrada (site svg): https://undraw.co/illustrations 
+
 
  

@@ -174,14 +174,23 @@ export default {
   },
   methods: {
     getProfilePhoto() {
-      let prefix = (this.form.photo.match(/\//) ? '' : '/img/profile/');
-      return prefix + this.form.photo;
+      return this.form.photo.indexOf('base64') != -1 ? this.form.photo : 'img/profile/' + this.form.photo;
     },
     updateInfo() {
       this.$Progress.start();
+      
+      if(this.form.password == '') {
+        this.form.password = undefined;
+      }
+
       this.form
         .put("api/perfil")
         .then(() => {
+          Toast.fire({
+            type: 'success',
+            title: 'Perfil atualizado com sucesso!'
+          });
+          Fire.$emit('AfterCreate');
           this.$Progress.finish();
         })
         .catch(() => {
@@ -211,7 +220,7 @@ export default {
     }
   },
   created() {
-    axios.get("api/perfil").then(({ data }) => this.form.fill(data));
+    axios.get("api/perfil").then(({ data }) => (this.form.fill(data)));
   }
 };
 </script>
