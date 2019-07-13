@@ -52,7 +52,7 @@ class UserController extends Controller
             "type" => $request['type'],
             "bio" => $request['bio'],
             "photo" => $request['photo'],
-            "password" => Hash::make($request['password']),
+            "password" => $request['password'],
         ]);
     }
 
@@ -102,10 +102,6 @@ class UserController extends Controller
             } 
         } 
         
-        if(!empty($request->password)) {
-            $request->merge(['password' => Hash::make($request['password'])]);
-        } 
-
         $user->update($request->all());
         return ["message" => "Success"];
     }
@@ -143,10 +139,6 @@ class UserController extends Controller
             'password' => 'sometimes|min:6'
         ]);
         
-        if(!empty($request->password)) {
-            $request->merge(['password' => Hash::make($request['password'])]);
-        }
-
         $user->update($request->all());
         return ['message' => 'Atualização de usuário'];
     }
