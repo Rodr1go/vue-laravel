@@ -103,7 +103,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <router-link to="/desenvolvedor" class="nav-link">
+            <router-link to="/developer" class="nav-link">
               <i class="nav-icon fas fa-cogs"></i>
               <p>
                 Desenvolvedor
@@ -113,7 +113,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           @endcan
           
           <li class="nav-item">
-            <router-link to="/perfil" class="nav-link">
+            <router-link to="/profile" class="nav-link">
               <i class="nav-icon fas fa-user orange"></i>
               <p>
                 Perfil
@@ -163,10 +163,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
+      Simples Boilerplate
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2019-2019 <a href="#">Laravel - VueJS</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

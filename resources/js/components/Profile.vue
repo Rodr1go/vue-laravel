@@ -28,7 +28,7 @@
               <div class="col-sm-4 border-right">
                 <div class="description-block">
                   <h5 class="description-header">3,200</h5>
-                  <span class="description-text">SALES</span>
+                  <span class="description-text">Vendas</span>
                 </div>
                 <!-- /.description-block -->
               </div>
@@ -36,7 +36,7 @@
               <div class="col-sm-4 border-right">
                 <div class="description-block">
                   <h5 class="description-header">13,000</h5>
-                  <span class="description-text">FOLLOWERS</span>
+                  <span class="description-text">Seguidores</span>
                 </div>
                 <!-- /.description-block -->
               </div>
@@ -44,7 +44,7 @@
               <div class="col-sm-4">
                 <div class="description-block">
                   <h5 class="description-header">35</h5>
-                  <span class="description-text">PRODUCTS</span>
+                  <span class="description-text">Produtos</span>
                 </div>
                 <!-- /.description-block -->
               </div>
@@ -119,7 +119,7 @@
                     <label
                       for="passport"
                       class="col-sm-12 control-label"
-                    >Passport (Deixe vazio se não quiser mudar)</label>
+                    >Senha (Deixe vazio se não quiser mudar)</label>
 
                     <div class="col-sm-12">
                       <input
@@ -127,7 +127,7 @@
                         v-model="form.password"
                         class="form-control"
                         id="password"
-                        placeholder="Passport"
+                        placeholder="Senha"
                       />
                     </div>
                   </div>
