@@ -1885,7 +1885,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      users: 0
+    };
+  },
+  methods: {
+    countUsers: function countUsers() {
+      var _this = this;
+
+      if (this.$gate.isAdminOrAuthor()) {
+        axios.get('api/countUsers').then(function (_ref) {
+          var data = _ref.data;
+          return _this.users = data;
+        });
+      }
+    }
+  },
+  created: function created() {
+    this.countUsers();
+  },
   mounted: function mounted() {
     console.log('Component mounted.');
   }
@@ -63168,15 +63207,52 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      { staticClass: "row justify-content-center" },
-      [_c("not-found")],
-      1
-    )
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12 mt-3" }, [
+        _c("div", { staticClass: "col-lg-3 col-6" }, [
+          _vm.$gate.isAdminOrAuthor()
+            ? _c(
+                "div",
+                { staticClass: "small-box bg-warning" },
+                [
+                  _c("div", { staticClass: "inner" }, [
+                    _c("h3", [_vm._v(_vm._s(_vm.users))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v("Usuários Registrados")])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "small-box-footer",
+                      attrs: { to: "/users" }
+                    },
+                    [
+                      _vm._v("\n                      Mais informações "),
+                      _c("i", { staticClass: "fas fa-arrow-circle-right" })
+                    ]
+                  )
+                ],
+                1
+              )
+            : _vm._e()
+        ])
+      ])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "icon" }, [
+      _c("i", { staticClass: "fas fa-user" })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -82116,20 +82192,23 @@ Vue.use(vue_progressbar__WEBPACK_IMPORTED_MODULE_5___default.a, {
   height: '3px'
 });
 var routes = [{
+  path: '',
+  component: __webpack_require__(/*! ./components/Dashboard.vue */ "./resources/js/components/Dashboard.vue")["default"]
+}, {
+  path: '*',
+  component: __webpack_require__(/*! ./components/NotFound.vue */ "./resources/js/components/NotFound.vue")["default"]
+}, {
+  path: '/users',
+  component: __webpack_require__(/*! ./components/Users.vue */ "./resources/js/components/Users.vue")["default"]
+}, {
+  path: '/perfil',
+  component: __webpack_require__(/*! ./components/Perfil.vue */ "./resources/js/components/Perfil.vue")["default"]
+}, {
   path: '/dashboard',
   component: __webpack_require__(/*! ./components/Dashboard.vue */ "./resources/js/components/Dashboard.vue")["default"]
 }, {
   path: '/desenvolvedor',
   component: __webpack_require__(/*! ./components/Developer.vue */ "./resources/js/components/Developer.vue")["default"]
-}, {
-  path: '/perfil',
-  component: __webpack_require__(/*! ./components/Perfil.vue */ "./resources/js/components/Perfil.vue")["default"]
-}, {
-  path: '/users',
-  component: __webpack_require__(/*! ./components/Users.vue */ "./resources/js/components/Users.vue")["default"]
-}, {
-  path: '*',
-  component: __webpack_require__(/*! ./components/NotFound.vue */ "./resources/js/components/NotFound.vue")["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]({
   mode: 'history',
@@ -82173,7 +82252,7 @@ var app = new Vue({
   methods: {
     searchit: _.debounce(function () {
       Fire.$emit('searching');
-    }, 1000),
+    }, 800),
     printme: function printme() {
       window.print();
     }

@@ -32,6 +32,13 @@ class UserController extends Controller
        }
     }
 
+    public function countUsers() 
+    {
+       if(\Gate::allows('isAdmin') || \Gate::allows('isAuthor')) {
+           return User::count();
+       }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -167,7 +174,7 @@ class UserController extends Controller
                           ->orwhere('type', 'LIKE', "%$search%");
             })->paginate(7);
         } else {
-            $users = User::latest()->paginate(5); 
+            $users = User::latest()->paginate(7); 
         }
 
         return $users;

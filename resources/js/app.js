@@ -43,11 +43,12 @@ Vue.use(VueProgressBar, {
 })
 
 let routes = [
+  { path: '', component: require('./components/Dashboard.vue').default },
+  { path: '*', component: require('./components/NotFound.vue').default },
+  { path: '/users', component: require('./components/Users.vue').default },
+  { path: '/perfil', component: require('./components/Perfil.vue').default },
   { path: '/dashboard', component: require('./components/Dashboard.vue').default },
   { path: '/desenvolvedor', component: require('./components/Developer.vue').default },
-  { path: '/perfil', component: require('./components/Perfil.vue').default },
-  { path: '/users', component: require('./components/Users.vue').default },
-  { path: '*', component: require('./components/NotFound.vue').default }
 ]
 
 const router = new VueRouter({
@@ -114,7 +115,7 @@ const app = new Vue({
     methods: {
       searchit: _.debounce(() => {
         Fire.$emit('searching');
-      }, 1000),
+      }, 800),
       printme() {
         window.print();
       }
