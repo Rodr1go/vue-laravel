@@ -98,7 +98,7 @@
                         <select name="type" v-model="form.type" id="type" class="form-control" :class="{
                           'is-invalid': form.errors.has('type') }">
                           <option value="" disabled selected>-- Selecione o tipo de permissão --</option>
-                          <option value="admin">Admin</option>
+                          <option value="admin">Administrador</option>
                           <option value="user">Usuário comum</option>
                           <option value="autor">Autor</option>
                         </select>

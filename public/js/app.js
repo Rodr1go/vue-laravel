@@ -66021,7 +66021,7 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("option", { attrs: { value: "admin" } }, [
-                              _vm._v("Admin")
+                              _vm._v("Administrador")
                             ]),
                             _vm._v(" "),
                             _c("option", { attrs: { value: "user" } }, [
@@ -82207,7 +82207,7 @@ var routes = [{
   path: '/dashboard',
   component: __webpack_require__(/*! ./components/Dashboard.vue */ "./resources/js/components/Dashboard.vue")["default"]
 }, {
-  path: '/desenvolvedor',
+  path: '/developer',
   component: __webpack_require__(/*! ./components/Developer.vue */ "./resources/js/components/Developer.vue")["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]({

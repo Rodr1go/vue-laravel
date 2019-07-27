@@ -58,7 +58,6 @@ class UserController extends Controller
             "email" => $request['email'],
             "type" => $request['type'],
             "bio" => $request['bio'],
-            "photo" => $request['photo'],
             "password" => $request['password'],
         ]);
     }
