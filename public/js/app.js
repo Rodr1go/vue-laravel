@@ -3477,6 +3477,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -66048,6 +66053,12 @@ var render = function() {
                         _c("input", {
                           directives: [
                             {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.editmode,
+                              expression: "editmode"
+                            },
+                            {
                               name: "model",
                               rawName: "v-model",
                               value: _vm.form.password,
@@ -66061,7 +66072,53 @@ var render = function() {
                           attrs: {
                             type: "password",
                             name: "password",
-                            id: "password"
+                            id: "password",
+                            placeholder:
+                              "Senha (Mantenha em branco caso não queira alterar)"
+                          },
+                          domProps: { value: _vm.form.password },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "password",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("has-error", {
+                          attrs: { form: _vm.form, field: "password" }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: !_vm.editmode,
+                              expression: "!editmode"
+                            },
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.password,
+                              expression: "form.password"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          class: {
+                            "is-invalid": _vm.form.errors.has("password")
+                          },
+                          attrs: {
+                            type: "password",
+                            name: "password",
+                            id: "password",
+                            placeholder: "Senha"
                           },
                           domProps: { value: _vm.form.password },
                           on: {

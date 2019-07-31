@@ -73,23 +73,6 @@ class UserController extends Controller
             'password' => 'sometimes|required|min:6'
         ]);
 
-        /* if ($request->photo && $request->photo !== $user->photo) {
-            $imageName = preg_match_all('/data\:image\/([a-zA-Z]+)\;base64/',$request->photo,$matched);
-            $ext = isset($matched[1][0]) ? $matched[1][0] : false;
-            $imageName = sha1(time()) . '.' .$ext;
-            
-            // create photo
-            $directory = storage_path('app/public/profiles/');
-            Storage::makeDirectory('public/profiles');
-            Image::make($request->photo)->save($directory.$imageName);
-            
-            // delete old photo
-            Storage::delete('public/profiles/'.$user->photo);
-            
-            // save DB
-            $user->photo = $imageName;
-        } */
-        
         $currentPhoto = $user->photo;
         
         if($request->photo != $currentPhoto) {    

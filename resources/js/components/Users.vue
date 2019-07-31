@@ -106,8 +106,13 @@
                       </div>
 
                       <div class="form-group">
-                        <input v-model="form.password" type="password" name="password" id="password"
-                            class="form-control" :class="{ 'is-invalid':
+                        <input v-show="editmode" v-model="form.password" type="password" name="password" id="password"
+                            placeholder="Senha (Mantenha em branco caso não queira alterar)" class="form-control" :class="{ 'is-invalid':
+                            form.errors.has('password') }">
+                        <has-error :form="form" field="password"></has-error>
+                      
+                        <input v-show="!editmode" v-model="form.password" type="password" name="password" id="password"
+                            placeholder="Senha" class="form-control" :class="{ 'is-invalid':
                             form.errors.has('password') }">
                         <has-error :form="form" field="password"></has-error>
                       </div>
