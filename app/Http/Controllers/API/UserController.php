@@ -87,7 +87,9 @@ class UserController extends Controller
             
             // remove a foto atual
             if(file_exists($userPhoto)) {
-                @unlink($userPhoto);
+                if($userPhoto != public_path('img/profile/profile.png')) {
+                    @unlink($userPhoto);
+                }
             } 
         } 
         
