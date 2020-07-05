@@ -7,6 +7,7 @@
 
 Clone o repositório: 
   `https://github.com/Rodr1go/boilerplate-laravel-vuejs.git`
+
 Entre no diretório da aplicação via terminal: 
 ```sh 
 $ cd vue-laravel
